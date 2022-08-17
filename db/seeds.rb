@@ -36,4 +36,13 @@ end
     )
 end
 
+brands.each do |b|
+    Brand.create(
+        name: b,   
+        image_url: Faker::Company.logo
+    )
+    end
+
+
+
 puts "Done seeding, mane!"
