@@ -4,4 +4,5 @@ class Store < ApplicationRecord
 
     has_many :shoes
     has_many :users, through: :shoes
+    has_many :brands, through: :shoes
 end
