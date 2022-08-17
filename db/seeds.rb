@@ -29,4 +29,11 @@ brands = ["Jordan", "Nike", "Addidas", "Puma", "Yeezy", "New Balance"]
 
 end
 
+5.times do
+    Store.create(
+        name: Faker::Company.name,
+        address: Faker::Address.full_address
+    )
+end
+
 puts "Done seeding, mane!"
