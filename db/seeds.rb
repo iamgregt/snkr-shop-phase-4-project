@@ -43,6 +43,27 @@ brands.each do |b|
     )
     end
 
+def is_jordan (num)
+    if num == 1
+        Faker::Number.between(from: 1, to:23)
+    else  
+    nil
+    end
+end
+
+
+200.times do
+    brand = Faker::Number.between(from: 1, to: 6)
+
+    Shoe.create(
+        name: Faker::Barcode.ean(8),
+        # size: Faker::Number.between(from: 4, to: 15),
+        brand_id: brand,
+        in_stock: true,
+        price: Faker::Number.between(from: 60, to: 300),
+        model_num: is_jordan(brand)
+    )
+        end
 
 
 puts "Done seeding, mane!"

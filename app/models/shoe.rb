@@ -1,6 +1,6 @@
 class Shoe < ApplicationRecord
     validates :name, presence: true
-    validates :size, numericality: {greater_than: 4, less_than: 16}
+    # validates :size, numericality: {greater_than: 4, less_than: 16}
     validates :brand_id, presence: true
     validates :in_stock, presence: true
     validates :price, presence: true
