@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 brands = ["Jordan", "Nike", "Addidas", "Puma", "Yeezy", "New Balance"]
+stores = ["Finish Line", "FootLocker", "Hibbet Sports"]
 
 50.times do
     first_name = Faker::Name.first_name
@@ -28,6 +29,11 @@ brands = ["Jordan", "Nike", "Addidas", "Puma", "Yeezy", "New Balance"]
     )
 
 end
+
+stores.each do |s|
+    Store.create(
+        name: b,
+    )
 
 5.times do
     Store.create(

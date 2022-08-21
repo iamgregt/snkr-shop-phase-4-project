@@ -6,10 +6,10 @@ function App() {
   const [shoes, setShoes] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/shoes')
+    fetch('http://localhost:3000/stores')
     .then(r => r.json())
     .then(shoes => setShoes(shoes))
-  })
+  }, [])
 
   return (
     <div className="App">
@@ -17,7 +17,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <ul>
           {shoes.map((s) => {
-            return <li>{s}</li>
+            return <img src="https://media.finishline.com/i/finishline/FNLLogo_1200x630" alt="Logo" />
           })}
         </ul>
         <a
