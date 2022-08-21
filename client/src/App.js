@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
+import StoresContainer from './StoresContainer';
 function App() {
 
   const [shoes, setShoes] = useState([])
@@ -15,11 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <ul>
-          {shoes.map((s) => {
-            return <img src="https://media.finishline.com/i/finishline/FNLLogo_1200x630" alt="Logo" />
-          })}
-        </ul>
+       <StoresContainer />
         <a
           className="App-link"
           href="https://reactjs.org"
