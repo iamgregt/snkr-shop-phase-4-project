@@ -8,7 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function NavBar() {
   return (
     <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home">
             Sneaker Stop
