@@ -9,6 +9,7 @@ import NavBar from './NavBar';
 function App() {
 
   const [shoes, setShoes] = useState([])
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     fetch('http://localhost:3000/shoes')
@@ -23,7 +24,7 @@ function App() {
        <StoresContainer />
     </Route>
     <Route path="/login">
-    <Login />
+    <Login onLogin={setUser}/>
     </Route>
     </>
   );
