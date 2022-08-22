@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
 import StoresContainer from './StoresContainer';
+import { Button } from 'react-bootstrap';
 function App() {
 
   const [shoes, setShoes] = useState([])
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Button>This Here!</Button>
        <StoresContainer />
         <a
           className="App-link"

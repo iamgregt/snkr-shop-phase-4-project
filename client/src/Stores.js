@@ -16,8 +16,9 @@ function Stores() {
         <div id="stores">
             {stores.map(s => {
                 return(<>
+                    <img src={s.logo_url}/>
                     <h2>{s.name}</h2>
-                    <h3>{s.logo_url}</h3>
+                    <h3>{s.address}</h3>
                     </>
                 )
             })}
