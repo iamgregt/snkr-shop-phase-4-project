@@ -26,4 +26,10 @@ class UsersController < ApplicationController
         user.delete
         head :no_content
     end
+
+    private
+
+    def user_params
+        params.permit(:username, :password, :first_name, :last_name, :shoe_size)
+    end
 end
