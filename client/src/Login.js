@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useTransition } from "react"
 import {useState} from "react"
 
 
@@ -7,6 +7,9 @@ function Login({onLogin}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("")
     const [authMode, setAuthMode] = useState("signin")
+    const [shoeSize, setShoeSize] = useState(null)
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
 
     const changeAuthMode = () => {
       setAuthMode(authMode === "signin" ? "signup" : "signin")
@@ -19,13 +22,18 @@ function Login({onLogin}) {
     function handlePasswordChange(e){
       setPassword(e.target.value)
     }
+    function handleShoeSize(e){
+      setShoeSize(e.target.value)
+    }
 
     function handleSubmit(e) {
       const user = {
         username,
         password,
-        shoe_size
+        shoeSize
       }
+
+   
 
 
         e.preventDefault();
@@ -89,6 +97,22 @@ function Login({onLogin}) {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign Up</h3>
           <div className="form-group mt-3">
+            <label>First Name</label>
+            <input
+            required
+              type="text"
+              className="form-control mt-1"
+              placeholder="First Name"
+            />
+               <label>Last Name</label>
+            <input
+            required
+              type="text"
+              className="form-control mt-1"
+              placeholder="Last Name"
+            />
+          </div>
+          <div className="form-group mt-3">
             <label>Username</label>
             <input
             required
@@ -112,6 +136,8 @@ function Login({onLogin}) {
           <div className="form-group mt-3">
             <label>Shoe Size</label>
             <input
+              value={shoeSize}
+              onChange={handleShoeSize}
               type="number"
               min={4}
               max={15}
