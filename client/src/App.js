@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import StoresContainer from './StoresContainer';
 import Route from "react-router-dom/Route.js"
 import Login from './Login';
+import NavBar from './NavBar';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+    <NavBar />
     <Route exact path="/">
        <StoresContainer />
     </Route>
