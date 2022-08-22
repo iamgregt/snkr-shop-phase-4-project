@@ -16,9 +16,14 @@ function App() {
   }, [])
 
   return (
-    <Route path="/">
+    <>
+    <Route exact path="/">
        <StoresContainer />
     </Route>
+    <Route path="/login">
+    <Login />
+    </Route>
+    </>
   );
 }
 
