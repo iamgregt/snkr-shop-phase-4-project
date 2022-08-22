@@ -15,8 +15,10 @@ function Stores() {
         <>
         <div id="stores">
             {stores.map(s => {
-                return(
+                return(<>
                     <h2>{s.name}</h2>
+                    <h3>{s.logo_url}</h3>
+                    </>
                 )
             })}
         </div>

@@ -7,7 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 brands = ["Jordan", "Nike", "Addidas", "Puma", "Yeezy", "New Balance"]
-stores = ["Finish Line", "FootLocker", "Hibbet Sports"]
+
+stores = [
+    finish_line = {
+    name: "Finish Line",
+    logo_url: "https://media.finishline.com/i/finishline/FNLLogo_1200x630"
+},
+
+foot_locker = {
+    name: "Foot Locker",
+    logo_url: "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Foot_Locker_logo.svg/1200px-Foot_Locker_logo.svg.png"
+},
+
+hibbett_sports = {
+    name: "Hibbett Sports",
+    logo_url: "https://www.freelogovectors.net/wp-content/uploads/2022/07/hibbett-logo-freelogovectors.net_.png"
+}
+]
 
 50.times do
     first_name = Faker::Name.first_name
@@ -32,15 +48,19 @@ end
 
 stores.each do |s|
     Store.create(
-        name: b,
-    )
+        name: s[:name],
+        address: Faker::Address.full_address,
+        logo_url: s[:logo_url]
 
-5.times do
-    Store.create(
-        name: Faker::Company.name,
-        address: Faker::Address.full_address
     )
 end
+
+# 5.times do
+#     Store.create(
+#         name: Faker::Company.name,
+#         address: Faker::Address.full_address
+#     )
+# end
 
 brands.each do |b|
     Brand.create(
