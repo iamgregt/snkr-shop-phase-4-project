@@ -87,7 +87,8 @@ end
         brand_id: brand,
         in_stock: true,
         price: Faker::Number.between(from: 60, to: 300),
-        model_num: is_jordan(brand)
+        model_num: is_jordan(brand),
+        store_id: Faker::Number.between(from: 1, to: 3)
     )
         end
 

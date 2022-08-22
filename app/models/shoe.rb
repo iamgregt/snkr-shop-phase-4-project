@@ -6,7 +6,7 @@ class Shoe < ApplicationRecord
     validates :price, presence: true
     validates :price, numericality: {greater_than_or_equal_to: 1, less_than: 2001}
 
-    has_many :stores
+    belongs_to :store
     belongs_to :brand
 
 end
