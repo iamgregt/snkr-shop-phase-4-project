@@ -1,4 +1,4 @@
-import React, { useTransition } from "react"
+import React, { useEffect } from "react"
 import {useState} from "react"
 
 
@@ -10,6 +10,11 @@ function Login({onLogin}) {
     const [shoeSize, setShoeSize] = useState(null)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
+    const [errors, setErrors] = useState([])
+
+    useEffect(() => {
+      console.log(errors.join(""))
+    }, [errors])
 
     function handleFirstName(e){
       setFirstName(e.target.value)
@@ -59,8 +64,17 @@ function Login({onLogin}) {
           },
           body: JSON.stringify(user),
         })
-          .then((r) => r.json())
-          .then((user) => onLogin(user));
+          .then((r) => {
+            if(r.ok){
+              r.json().then((user) => onLogin(user))
+            } else {
+              r.json()
+              .then(e => {
+                setErrors(Object.entries(e.errors).flat())
+              })
+            }
+          })
+          ;
       }
 
       if (authMode === "signin") {
