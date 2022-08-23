@@ -11,6 +11,14 @@ function Login({onLogin}) {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
 
+    function handleFirstName(e){
+      setFirstName(e.target.value)
+    }
+
+    function handleLastName(e){
+      setLastName(e.target.value)
+    }
+
     const changeAuthMode = () => {
       setAuthMode(authMode === "signin" ? "signup" : "signin")
     }
@@ -27,10 +35,17 @@ function Login({onLogin}) {
     }
 
     function handleSubmit(e) {
+
+      const first_name = firstName
+      const last_name = lastName
+      const shoe_size = shoeSize
+
       const user = {
+        first_name ,
+        last_name,
         username,
         password,
-        shoeSize
+        shoe_size
       }
 
    
@@ -42,7 +57,7 @@ function Login({onLogin}) {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ user }),
+          body: JSON.stringify(user),
         })
           .then((r) => r.json())
           .then((user) => onLogin(user));
@@ -99,6 +114,8 @@ function Login({onLogin}) {
           <div className="form-group mt-3">
             <label>First Name</label>
             <input
+            value={firstName}
+            onChange={handleFirstName}
             required
               type="text"
               className="form-control mt-1"
@@ -106,6 +123,8 @@ function Login({onLogin}) {
             />
                <label>Last Name</label>
             <input
+            value={lastName}
+            onChange={handleLastName}
             required
               type="text"
               className="form-control mt-1"

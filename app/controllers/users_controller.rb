@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    wrap_parameters format: []
+    wrap_parameters false
 
     def index
         render json: User.all 
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create(user_params)
+        user = User.create!(user_params)
         render json: user, status: :created
     end
 
