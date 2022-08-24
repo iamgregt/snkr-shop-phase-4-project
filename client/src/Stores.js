@@ -9,6 +9,8 @@ function Stores() {
 
     const [stores, setStores] = useState([])
 
+    
+
     useEffect(() => {
         fetch("http://localhost:3000/stores")
         .then(r => r.json())

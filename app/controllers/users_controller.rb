@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+skip_before_action :authorized, only: :create
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     wrap_parameters false
@@ -9,10 +9,12 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
     end
     
     def show 
-        render json: User.find_by(id: params[:id])
+        current_user = User.find_by(id: session[:user_id])
+        render json: current_user
     end
 
     def create
+        byebug
         user = User.create!(user_params)
         render json: user, status: :created
     end

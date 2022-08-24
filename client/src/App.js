@@ -12,10 +12,20 @@ function App() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    fetch('http://localhost:3000/shoes')
-    .then(r => r.json())
-    .then(shoes => setShoes(shoes))
+    fetch('http://localhost:3000/auth')
+    .then(r => {
+      if(r.ok){
+        r.json().then(user => setUser(user))
+      }
+    })
   }, [])
+
+  if(!user) return <Login onLogin={setUser} />
+
+ 
+
+
+
 
   return (
     <>

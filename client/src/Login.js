@@ -39,6 +39,22 @@ function Login({onLogin}) {
       setShoeSize(e.target.value)
     }
 
+    function handleSignIn(e){
+      e.preventDefault()
+      console.log(username, password)
+
+      fetch('http://localhost:3000/login', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({username: username, password: password})
+      })
+      .then(r => r.json())
+      .then(user => onLogin(user))
+
+    }
+
     function handleSubmit(e) {
 
       const first_name = firstName
@@ -80,7 +96,7 @@ function Login({onLogin}) {
       if (authMode === "signin") {
         return (
           <div className="Auth-form-container">
-            <form className="Auth-form">
+            <form className="Auth-form" onSubmit={handleSignIn}>
               <div className="Auth-form-content">
                 <h3 className="Auth-form-title">Sign In</h3>
                 <div className="text-center">
@@ -90,16 +106,20 @@ function Login({onLogin}) {
                   </span>
                 </div>
                 <div className="form-group mt-3">
-                  <label>Email address</label>
+                  <label>Username</label>
                   <input
-                    type="email"
+                  value={username}
+                    onChange={handleChange}
+                    type="text"
                     className="form-control mt-1"
-                    placeholder="Enter email"
+                    placeholder="Enter username"
                   />
                 </div>
                 <div className="form-group mt-3">
                   <label>Password</label>
                   <input
+                    value={password}
+                    onChange={handlePasswordChange}
                     type="password"
                     className="form-control mt-1"
                     placeholder="Enter password"
