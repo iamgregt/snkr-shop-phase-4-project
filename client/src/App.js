@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-    <NavBar />
+    <NavBar currentUser={user}/>
     <Route exact path="/">
        <StoresContainer />
     </Route>

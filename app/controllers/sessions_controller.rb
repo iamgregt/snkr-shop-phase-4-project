@@ -15,4 +15,9 @@ class SessionsController < ApplicationController
         puts params[:username]
       end
     
+
+      def destroy
+        session.delete :user_id
+        head :no_content
+      end
 end
