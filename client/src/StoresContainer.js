@@ -2,12 +2,12 @@ import React, {useState, useEffect} from "react";
 import Stores from "./Stores";
 import Container from "react-bootstrap/Container"
 
-function StoresContainer() {
+function StoresContainer({setStore}) {
 
 
     return(
         <Container>
-                <Stores />
+                <Stores setStore={setStore} />
         </Container>
     )
 

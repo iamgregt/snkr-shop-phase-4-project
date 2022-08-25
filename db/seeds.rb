@@ -78,7 +78,7 @@ def is_jordan (num)
 end
 
 
-200.times do
+20.times do
     brand = Faker::Number.between(from: 1, to: 6)
 
     Shoe.create(

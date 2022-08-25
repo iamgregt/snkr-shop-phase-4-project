@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-skip_before_action :authorized, only: :create
+# skip_before_action :authorized, :only => [:create, :show]
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
     wrap_parameters false
@@ -8,10 +8,14 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
         render json: User.all 
     end
     
-    def show 
-        current_user = User.find_by(id: session[:user_id])
-        render json: current_user
+    def show
+    user = User.find_by(id: session[:id])
+    if user
+      render json: user, status: :created
+    else
+      render json: { error: "Not authorized" }, status: :unauthorized
     end
+  end
 
     def create
         byebug

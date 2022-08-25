@@ -2,10 +2,18 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react';
 
 
 
-function NavBar({user}) {
+function NavBar({user, setUser}) {
+  function handleLogout() {
+    fetch("http://localhost:3000/logout", {
+      method: "DELETE",
+    }).then(() => setUser(null));
+  }
+
+
   return (
     <>
       <Navbar bg="light" variant="light">
@@ -17,7 +25,7 @@ function NavBar({user}) {
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href={user ? "/logout" : "/login"}>{user ? "Logout" : "Logout"}</Nav.Link>
+            <Nav.Link href={user ? "/logout" : "/login"}>{user ? "Logout" : "Login"}</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

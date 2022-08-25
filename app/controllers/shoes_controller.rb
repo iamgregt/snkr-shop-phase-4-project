@@ -1,4 +1,6 @@
 class ShoesController < ApplicationController
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
 
     wrap_parameters format: []
     def index
@@ -15,7 +17,7 @@ class ShoesController < ApplicationController
     end
 
     def create
-        shoe = Shoe.create(shoe_params)
+        shoe = Shoe.create!(shoe_params)
         render json: shoe, status: :created
     end
 
@@ -27,7 +29,12 @@ class ShoesController < ApplicationController
 
     private
 
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+      end
+
+
     def shoe_params
-        params.permit(:model_num, :name, :brand_id, :in_stock, :price )
+        params.permit(:model_num, :name, :brand_id, :in_stock, :price, :store_id )
     end
 end

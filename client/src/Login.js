@@ -51,7 +51,10 @@ function Login({onLogin}) {
         body: JSON.stringify({username: username, password: password})
       })
       .then(r => r.json())
-      .then(user => onLogin(user))
+      .then(user => {
+        console.log(user)
+        onLogin(user)
+      })
 
     }
 
@@ -64,8 +67,8 @@ function Login({onLogin}) {
       const user = {
         first_name ,
         last_name,
-        username,
-        password,
+        username: username,
+        password: password,
         shoe_size
       }
 
@@ -81,7 +84,8 @@ function Login({onLogin}) {
           body: JSON.stringify(user),
         })
           .then((r) => {
-            if(r.ok){
+            if(r){
+              console.log(r)
               r.json().then((user) => onLogin(user))
             } else {
               r.json()

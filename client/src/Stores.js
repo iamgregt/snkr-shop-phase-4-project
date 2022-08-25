@@ -22,6 +22,7 @@ function Stores() {
        
             {stores.map(s => {
                 return(
+                  <>
                 <Col>
                 <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={s.logo_url} />
@@ -33,8 +34,15 @@ function Stores() {
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item>{s.summary}</ListGroup.Item>
-                  <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                  <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                  <ListGroup.Item>       <ul>
+                {s.shoes.map(
+                  shoe => {
+                    return (
+                      <li>{shoe.name}</li>
+                    )
+                  }
+                )}
+              </ul></ListGroup.Item>
                 </ListGroup>
                 <Card.Body>
                   <Card.Link href="#">Card Link</Card.Link>
@@ -42,6 +50,7 @@ function Stores() {
                 </Card.Body>
               </Card>
               </Col>
+              </>
               )
             })}
        </Row>   
